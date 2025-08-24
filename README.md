@@ -28,6 +28,22 @@ docker pull kunjcr2/llama-3.2-3b-openhermes
 docker run -p 8000:8000 kunjcr2/llama-3.2-3b-openhermes
 ```
 
+**HuggingFace Hub**: [`kunjcr2/llama-3.2-3b-openhermes`](https://huggingface.co/kunjcr2/llama3-3b-lora-openhermes)
+- **Run locally:**
+
+```python
+from transformers import AutoTokenizer, AutoModelForCausalLM
+
+tokenizer = AutoTokenizer.from_pretrained("kunjcr2/llama3-3b-lora-openhermes")
+model = AutoModelForCausalLM.from_pretrained("kunjcr2/llama3-3b-lora-openhermes")
+```
+or Run the 'text_generation' pipeline
+```python 
+from transformers import pipeline
+
+pipe = pipeline("text-generation", model="kunjcr2/llama3-3b-lora-openhermes")
+```
+
 - Exposes OpenAI-compatible API endpoints via vLLM:
 
 ```bash
@@ -42,3 +58,4 @@ curl http://localhost:8000/v1/chat/completions \
 🌍 Impact
 
 This project shows how to transform a raw base LLM into an instruction-following assistant, fine-tune efficiently with LoRA, and deploy as a scalable Dockerized service using vLLM.
+
